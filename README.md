@@ -8,14 +8,14 @@
 ## Downloading
 
 ```
-git clone https://github.com/bvfromru/nodejs2022Q4-service.git nodejs2022Q4-service
+git clone https://github.com/Azizbek98/nodejs2023-UZ-service.git
 ```
 
 ## Switching to development branch and Installing NPM modules
 
 ```
-cd nodejs2022Q4-service
-git checkout dev-part2
+cd nodejs2023-UZ-service
+git checkout dev-part-two
 npm install
 ```
 

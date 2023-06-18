@@ -30,7 +30,6 @@ const createTrackDto = {
   albumId: null,
 };
 
-// Probability of collisions for UUID is almost zero
 const randomUUID = '0a35dd62-e09f-444b-a628-f4e7c6954f57';
 
 describe('Favorites (e2e)', () => {
@@ -47,7 +46,6 @@ describe('Favorites (e2e)', () => {
   });
 
   afterAll(async () => {
-    // delete mock user
     if (mockUserId) {
       await removeTokenUser(unauthorizedRequest, mockUserId, commonHeaders);
     }
