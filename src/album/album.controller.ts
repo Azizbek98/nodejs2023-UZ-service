@@ -20,11 +20,6 @@ import { UpdateAlbumDto } from './dto/update-album.dto';
 export class AlbumController {
   constructor(private readonly albumService: AlbumService) {}
 
-  @Post()
-  create(@Body(new ValidationPipe()) createAlbumDto: CreateAlbumDto) {
-    return this.albumService.create(createAlbumDto);
-  }
-
   @Get()
   findAll() {
     return this.albumService.findAll();
