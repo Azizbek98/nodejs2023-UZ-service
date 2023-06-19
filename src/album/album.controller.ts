@@ -20,6 +20,11 @@ import { UpdateAlbumDto } from './dto/update-album.dto';
 export class AlbumController {
   constructor(private readonly albumService: AlbumService) {}
 
+  @Post()
+  create(@Body(new ValidationPipe()) createAlbumDto: CreateAlbumDto) {
+    return this.albumService.create(createAlbumDto);
+  }
+
   @Get()
   findAll() {
     return this.albumService.findAll();
@@ -36,11 +41,5 @@ export class AlbumController {
     @Body(new ValidationPipe()) updateAlbumDto: UpdateAlbumDto,
   ) {
     return this.albumService.update(id, updateAlbumDto);
-  }
-
-  @Delete(':id')
-  @HttpCode(204)
-  remove(@Param('id', ParseUUIDPipe) id: string) {
-    return this.albumService.remove(id);
   }
 }
