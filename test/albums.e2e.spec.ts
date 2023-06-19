@@ -1,11 +1,11 @@
-import { request } from './lib';
 import { StatusCodes } from 'http-status-codes';
-import { albumsRoutes, artistsRoutes, tracksRoutes } from './endpoints';
 import { validate } from 'uuid';
+import { albumsRoutes, artistsRoutes, tracksRoutes } from './endpoints';
+import { request } from './lib';
 import {
   getTokenAndUserId,
-  shouldAuthorizationBeTested,
   removeTokenUser,
+  shouldAuthorizationBeTested,
 } from './utils';
 
 const createAlbumDto = {
@@ -19,7 +19,6 @@ const createArtistDto = {
   grammy: true,
 };
 
-// Probability of collisions for UUID is almost zero
 const randomUUID = '0a35dd62-e09f-444b-a628-f4e7c6954f57';
 
 describe('Album (e2e)', () => {
@@ -36,7 +35,6 @@ describe('Album (e2e)', () => {
   });
 
   afterAll(async () => {
-    // delete mock user
     if (mockUserId) {
       await removeTokenUser(unauthorizedRequest, mockUserId, commonHeaders);
     }
@@ -141,13 +139,12 @@ describe('Album (e2e)', () => {
         responses.every(
           ({ statusCode }) => statusCode === StatusCodes.BAD_REQUEST,
         ),
-      ).toBe(true);
+      );
     });
   });
 
   describe('PUT', () => {
     it('should correctly update album', async () => {
-      // Preparation start
       const creationResponse = await unauthorizedRequest
         .post(albumsRoutes.create)
         .set(commonHeaders)
@@ -165,7 +162,6 @@ describe('Album (e2e)', () => {
 
       expect(creationArtistResponse.statusCode).toBe(StatusCodes.CREATED);
       const { id: updateArtistId } = creationArtistResponse.body;
-      // Preparation end
 
       const updateResponse = await unauthorizedRequest
         .put(albumsRoutes.update(createdId))

@@ -1,5 +1,5 @@
 export interface Album {
-  id: string; // uuid v4
+  id: string;
   name: string;
   year: number;
   artistId: string | null;

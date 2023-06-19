@@ -1,5 +1,5 @@
 export interface Track {
-  id: string; // uuid v4
+  id: string;
   name: string;
   artistId: string | null;
   albumId: string | null;
