@@ -12,7 +12,7 @@ services:
     volumes:
       - .:/usr/app
       - exclude:/usr/app/node_modules
-    restart: on-failure
+    restart: always
     networks:
       - db
   postgres:
